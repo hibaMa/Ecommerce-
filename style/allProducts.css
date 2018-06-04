@@ -1,0 +1,46 @@
+.card{
+    background-size: contain;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 17px;
+    border-radius: 10px;
+    margin: 10px;
+    text-decoration: none;
+    box-shadow: 1px 1px 9px grey;
+    width: 204px;
+    height: 280px;
+    float: left;
+}
+.card:hover{
+    transform:scale(1.12,1.12) ;
+}
+.image{
+    width: 200px;
+    height: 100%;
+}
+.name{
+    display: inline-block;
+    float: left;
+    color: black;
+    font-size: 23px;
+}
+.price{
+    font-size: 23px;
+    display: inline-block;
+    float: right;
+}
+.info{
+    height: 10%;
+    margin-top: 21px;
+}
+.imgDiv{
+    height: 80%;
+}
+.title{
+    font-size: 32px;
+    text-align: center;
+    background: gainsboro;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 6px;
+}

@@ -1,0 +1,57 @@
+#name{
+    margin-left: 41px;
+    width: 230px
+}
+.button{
+    display: inline-block;
+    width: 87px;
+    padding: 10px 20px;
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    margin: 20px;
+}
+.button:hover{
+    color: green;
+    background-color: white;
+}
+.container{
+    background-color: azure;
+    padding: 0 0 4px 50px;
+    width: 354px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+#price{
+    margin-left: 44px;
+    width: 229px;
+}
+input[type="text"],input[type="password"],input[type="number"]{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+#description{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+.floatLeft{
+    float: left;
+}
+.clearfix{
+    clear: both;
+}
+#allCat{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 25px;
+    width: 244px;
+}
+#img{
+    margin-left: 33px;
+    margin-top: 5px;
+    margin-bottom: 6px;
+}
