@@ -15,7 +15,7 @@ include_once "header.php";
                 <option value="yafa">yafa</option>
             </select></div>
         <div class="buttonDiv">
-            <input type="submit" value="regester" class="button regBtn">
+            <input type="submit" value="register" class="button regBtn">
             <a  href="signIn.php" class="button">signIn</a>
         </div>
     </form>

@@ -19,7 +19,7 @@
 .container{
     background-color: azure;
     padding: 0 0 4px 50px;
-    width: 354px;
+    width: 414px;
     border: 1px solid black;
     border-radius: 10px;
 }
@@ -48,7 +48,7 @@ input[type="text"],input[type="password"],input[type="number"]{
     border-radius: 5px;
     padding: 5px;
     margin-left: 25px;
-    width: 244px;
+    width: 225px;
 }
 #img{
     margin-left: 33px;

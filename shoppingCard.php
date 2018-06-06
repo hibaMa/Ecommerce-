@@ -13,8 +13,6 @@ if(isset($_SESSION['user'])) {
     $allProduct = getProductFromCart($_SESSION['user']);
 
     ?>
-<a href="controller.php?action=signOut">signOut</a>
-<a href="home.php">home</a>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -39,7 +37,7 @@ if(isset($_SESSION['user'])) {
                 </div>
                 <div class="clearFix"></div>
             </a>
-            <div class=""><a href="controller.php?action=deleteFromCard&id=<?php echo $prod->rowID ?>">delete</a></div>
+            <div style="height: 20%"><a class="btn btn-primary" href="controller.php?action=deleteFromCard&id=<?php echo $prod->rowID ?>">delete</a></div>
             </div>
 
         <?php

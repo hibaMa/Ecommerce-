@@ -2,21 +2,21 @@
     background-size: contain;
     display: inline-block;
     border: 1px solid black;
-    padding: 17px;
+    padding: 18px;
     border-radius: 10px;
     margin: 10px;
     text-decoration: none;
     box-shadow: 1px 1px 9px grey;
-    width: 204px;
-    height: 280px;
+    width: 213px;
+    height: 306px;
     float: left;
 }
 .card:hover{
     transform:scale(1.12,1.12) ;
 }
 .image{
-    width: 200px;
     height: 100%;
+    width: 100%;
 }
 .name{
     display: inline-block;
@@ -30,11 +30,11 @@
     float: right;
 }
 .info{
-    height: 10%;
+    height: 15%;
     margin-top: 21px;
 }
 .imgDiv{
-    height: 80%;
+    height: 65%;
 }
 .title{
     font-size: 32px;

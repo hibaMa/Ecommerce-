@@ -17,9 +17,10 @@ function connect_db()
 }
 
 function regester_db($userInfo){
+    $admin=0;
     $conn = connect_db();
-    $prepare = $conn->prepare('INSERT INTO `user_tbl`(`id`, `Fname`, `email`, `pass`, `Lname`, `city`, `user_activation_code`, `user_email_status`) VALUES (null,?,?,?,?,?,?,?)');
-    $prepare->bind_param('sssssss',$userInfo['fname'],$userInfo["email"], $userInfo["pass"],$userInfo['lname'], $userInfo["city"],$userInfo['user_activation_code'], $userInfo['user_email_status']);
+    $prepare = $conn->prepare('INSERT INTO `user_tbl`(`id`, `Fname`, `email`, `pass`, `Lname`, `city`, `user_activation_code`, `user_email_status`, `admin`) VALUES (null,?,?,?,?,?,?,?,?)');
+    $prepare->bind_param('sssssssd',$userInfo['fname'],$userInfo["email"], $userInfo["pass"],$userInfo['lname'], $userInfo["city"],$userInfo['user_activation_code'], $userInfo['user_email_status'],$admin);
     $prepare->execute();
     if (!$prepare->errno) {
         return false;
@@ -112,6 +113,7 @@ function getProductById_db($id){
 }
 
 function deleteCat_db($id){
+    deleteProductInCat_db($id);
     $con = connect_db();
     $prepare = $con->prepare('DELETE FROM `categories` WHERE id=?');
     $prepare->bind_param('d', $id);
@@ -129,7 +131,6 @@ function deletePro_db($id){
     $prepare = $con->prepare('DELETE FROM `products` WHERE id=?');
     $prepare->bind_param('d', $id);
     if ($prepare->execute()) {
-
         $con = connect_db();
         $prepare = $con->prepare('DELETE FROM `user_product` WHERE `proID`=? ');
         $prepare->bind_param('d', $id);
@@ -143,14 +144,36 @@ function deletePro_db($id){
     }
 }
 
+function getProductInCat_db($id)
+{
+    $con = connect_db();
+    $prepare = $con->prepare('SELECT * FROM `products` WHERE `category`=?');
+    $prepare->bind_param('d', $id);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    $array = [];
+    while ($row = $result->fetch_object()) {
+        $array[] = $row;
+    }
+    return $array;
+}
+
 function deleteProductInCat_db($id){
     $con = connect_db();
+    $array=getProductInCat_db($id);
+    foreach($array as $pro) {
+        $prepare = $con->prepare('DELETE FROM `user_product` WHERE `proID`=? ');
+        $prepare->bind_param('d', $pro->id);
+        if (!$prepare->execute()) {
+            return false;
+        }
+    }
+
     $prepare = $con->prepare('DELETE FROM `products` WHERE `category`=?');
     $prepare->bind_param('d', $id);
     $prepare->execute();
     if ($prepare->execute()) {
-        return true;
-
+            return true;
     } else {
         return false;
     }
@@ -249,4 +272,14 @@ function deleteFromCard_db($id){
     }
 }
 
+function get_user_by_id_db($id){
+    $conn = connect_db();
+    $prepare = $conn->prepare('SELECT * FROM `user_tbl` WHERE `id`=?');
+    $prepare->bind_param('d',$id);
+    $prepare->execute();
+    if (!$prepare->errno) {
+        $result=$prepare->get_result();
+        return $result->fetch_object();
+    } else return "error".$prepare->errno;
+}
 ?>

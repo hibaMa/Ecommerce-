@@ -12,8 +12,6 @@ if(isset($_SESSION['user'])) {
 $Product=getProductById($_GET["id"]);
 
 ?>
-<a href="controller.php?action=signOut">signOut</a>
-<a href="home.php">home</a>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -29,7 +27,7 @@ $Product=getProductById($_GET["id"]);
         <div class="description padTop10">
             <?php echo $Product->description ?>
         </div>
-        <div><a href="controller.php?action=addProductToCard&id=<?php echo $Product->id ?>&userID=<?php echo $_SESSION['user'] ?>">add to the card</a></div>
+        <div><a href="controller.php?action=addProductToCard&id=<?php echo $Product->id ?>&userID=<?php echo $_SESSION['user'] ?>" class="btn btn-primary">add to the card</a></div>
     </div>
     <div class="clearfix"></div>
 </div>

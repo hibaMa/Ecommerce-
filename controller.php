@@ -1,8 +1,9 @@
 <?php
+require_once('swiftmailer-5.x/lib/swift_required.php');
 include_once "model.php";
-include_once "controller/userFun.php";
-include_once "controller/categoryFun.php";
-include_once "controller/productFun.php";
+include_once "userFun.php";
+include_once "categoryFun.php";
+include_once "productFun.php";
 if(isset($_GET['action'])){
     $action=$_GET['action'];
     switch($action) {

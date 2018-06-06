@@ -14,15 +14,15 @@ function addCategory(){
 
             $Error=addCategory_db($cat);
             if($Error){
-                redirect("adminPages/addCategory.php?error=".$Error);
+                redirect("addCategory.php?error=".$Error);
             }else{
-                redirect("adminPages/addCategory.php?goodSMS=added Successfully ");
+                redirect("addCategory.php?goodSMS=added Successfully ");
             }
         }else{
-            redirect("adminPages/addCategory.php?error=fill all spaces ");
+            redirect("addCategory.php?error=fill all spaces ");
         }
     }else{
-        redirect("adminPages/addCategory.php?error=set all spaces ");
+        redirect("addCategory.php?error=set all spaces ");
     }
 }
 function editCat($id){
@@ -36,15 +36,15 @@ function editCat($id){
 
             $Error=editCat_db($cat);
             if($Error){
-                redirect("adminPages/AllCategoryTable.php?error=".$Error);
+                redirect("AllCategoryTable.php?error=".$Error);
             }else{
-                redirect("adminPages/AllCategoryTable.php?goodSMS=edited Successfully ");
+                redirect("AllCategoryTable.php?goodSMS=edited Successfully ");
             }
         }else{
-            redirect("adminPages/AllCategoryTable.php?error=fill all spaces ");
+            redirect("AllCategoryTable.php?error=fill all spaces ");
         }
     }else{
-        redirect("adminPages/AllCategoryTable.php?error=set all spaces ");
+        redirect("AllCategoryTable.php?error=set all spaces ");
     }
 
 }
@@ -54,12 +54,12 @@ function getAllCategory(){
 function deleteCat($id){
     if(deleteCat_db($id)){
        if(deleteProductInCat($id)){
-           redirect("adminPages/AllCategoryTable.php ");
+           redirect("AllCategoryTable.php ");
        }else{
-           redirect("adminPages/AllCategoryTable.php?error=system error in delete product in cat  ");
+           redirect("AllCategoryTable.php?error=system error in delete product in cat  ");
        }
     }else{
-        redirect("adminPages/AllCategoryTable.php?error=system error in delete cat  ");
+        redirect("AllCategoryTable.php?error=system error in delete cat  ");
 
     }
 }

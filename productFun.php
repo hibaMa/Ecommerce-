@@ -9,7 +9,7 @@ function  addProduct(){
     if(isset($_POST["name"]) && isset($_POST["description"])&& isset($_POST["price"])&& isset($_POST["allCat"])){
         if($_POST["name"].trim(" ")!="" && $_POST["description"].trim(" ")!="" && $_POST["price"].trim(" ")!="" ){
 
-            $product['productImg']=uploadProductImage("adminPages/addProducts.php");
+            $product['productImg']=uploadProductImage("addProducts.php");
             $product['name']=$_POST["name"];
             $product['description']=$_POST["description"];
             $product['price']=$_POST["price"];
@@ -17,16 +17,16 @@ function  addProduct(){
 
             $Error=addProduct_db($product);
             if($Error){
-                redirect("adminPages/addProducts.php?error=system Error ".$Error);
+                redirect("addProducts.php?error=system Error ".$Error);
             }else{
-                redirect("adminPages/addProducts.php?goodSMS=added Successfully ");
+                redirect("addProducts.php?goodSMS=added Successfully ");
             }
 
         }else{
-            redirect("adminPages/addProducts.php?error=fill all spaces product");
+            redirect("addProducts.php?error=fill all spaces product");
         }
     }else{
-        redirect("adminPages/addProducts.php?error=set all spaces ");
+        redirect("addProducts.php?error=set all spaces ");
     }
 }
 
@@ -41,23 +41,23 @@ function  editPro($id){
             $product['id']=$id;
 
             if($_FILES['productImg']['name']!=""){
-                $product['img']=uploadProductImage("adminPages/AllProductsTable.php");
+                $product['img']=uploadProductImage("AllProductsTable.php");
                 $Error=editPro_db($product);
             }
             else{
                 $Error=editPro_db_noImg($product);
             }
             if($Error){
-                redirect("adminPages/AllProductsTable.php?error=system Error ".$Error);
+                redirect("AllProductsTable.php?error=system Error ".$Error);
             }else{
-                redirect("adminPages/AllProductsTable.php?goodSMS=added Successfully ");
+                redirect("AllProductsTable.php?goodSMS=added Successfully ");
             }
 
         }else{
-            redirect("adminPages/AllProductsTable.php?error=fill all spaces product");
+            redirect("AllProductsTable.php?error=fill all spaces product");
         }
     }else{
-        redirect("adminPages/AllProductsTable.php?error=set all spaces ");
+        redirect("AllProductsTable.php?error=set all spaces ");
     }
 }
 
@@ -109,9 +109,9 @@ function getAllProduct(){
 
 function deletePro($id){
     if(deletePro_db($id)){
-            redirect("adminPages/AllProductsTable.php ");
+            redirect("AllProductsTable.php ");
     }else{
-        redirect("adminPages/AllProductsTable.php?error=system error in delete cat  ");
+        redirect("AllProductsTable.php?error=system error in delete cat  ");
 
     }
 }

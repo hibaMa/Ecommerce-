@@ -1,11 +1,10 @@
 <?php
-include_once "../controller.php";
-include_once "../header.php";
+include_once "controller.php";
+include_once "header.php";
 $cat=getCatById_db($_GET["id"]);
 if(isset($_SESSION['user'])) {
 ?>
-<a href="../controller.php?action=signOut">signOut</a>
-<a href="../home.php">home</a>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -16,7 +15,7 @@ if(isset($_SESSION['user'])) {
 <div class="container">
     <h2>Add New Category</h2>
 
-    <form action="../controller.php?action=editCat&id=<?php echo $_GET["id"] ?>" method="post">
+    <form action="controller.php?action=editCat&id=<?php echo $_GET["id"] ?>" method="post">
         <div><label>name:</label><input type="text" id="name" name="name" value="<?php echo $cat->name?>"></div>
         <div>
             <label class="floatLeft">description:</label>
@@ -32,7 +31,7 @@ if(isset($_SESSION['user'])) {
 </div>
 </body>
 </html>
-<link rel="stylesheet" href="../style/add.css">
+<link rel="stylesheet" href="style/add.css">
 <?php
-}else redirect("../signIn.php");
+}else redirect("signIn.php");
 ?>

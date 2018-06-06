@@ -13,8 +13,7 @@ if(isset($_SESSION['user'])) {
     $allProduct = getAllProductByCategoryId($_GET["id"]);
     $catName = $_GET["catName"];
     ?>
-<a href="controller.php?action=signOut">signOut</a>
-<a href="home.php">home</a>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">

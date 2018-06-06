@@ -1,13 +1,12 @@
 <?php
-include_once "../header.php";
-include_once "../controller.php";
+include_once "header.php";
+include_once "controller.php";
 if(isset($_SESSION['user'])) {
 
 $allCategory=getAllCategory();
 $product=getProductById($_GET["id"]);
 ?>
-<a href="../controller.php?action=signOut">signOut</a>
-<a href="../home.php">home</a>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -18,7 +17,7 @@ $product=getProductById($_GET["id"]);
 <div class="container">
     <h2>Add New Product</h2>
 
-    <form action="../controller.php?action=editPro&id=<?php echo $_GET["id"] ?>" method="post" enctype="multipart/form-data">
+    <form action="controller.php?action=editPro&id=<?php echo $_GET["id"] ?>" method="post" enctype="multipart/form-data">
         <div>
             <label>category</label>
             <select name="allCat" id="allCat">
@@ -50,8 +49,8 @@ $product=getProductById($_GET["id"]);
 </div>
 </body>
 </html>
-<link rel="stylesheet" href="../style/add.css">
+<link rel="stylesheet" href="style/add.css">
 
 <?php
-}else redirect("../signIn.php");
+}else redirect("signIn.php");
 ?>

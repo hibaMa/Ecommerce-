@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once('swiftmailer-5.x/lib/swift_required.php');
 function regester(){
     if(isset($_POST["Fname"]) && isset($_POST["city"]) && isset($_POST["pass"])&&
         isset($_POST["Lname"]) && isset($_POST["email"]) ){
@@ -113,6 +112,10 @@ function generateRandomString($length = 10) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;
+}
+
+function get_user_by_id($id){
+    return get_user_by_id_db($id);
 }
 
 
