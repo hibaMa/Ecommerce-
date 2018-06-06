@@ -121,7 +121,6 @@ function addProductToCard($proID,$userID){
         redirect("home.php?goodSMS=added Successfully ");
     }else{
         redirect("home.php?error=system error in add to card  ");
-
     }
 }
 

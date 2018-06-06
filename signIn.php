@@ -6,7 +6,10 @@ include_once "header.php";
     <form action="controller.php?action=signIn" method="post">
         <div>Email : <input name="email" type="text" class="signEmail"/></div>
         <div>Password : <input name="pass" type="password"/></div>
-        <div><input type="submit" value="signIn" class="button regBtn">
+        <div>
+            <input type="submit" value="signIn" class="button regBtn">
+            <a  href="register.php" class="button">register</a>
+        </div>
     </form>
 </div>
 <link rel="stylesheet"  href="style/form.css" >

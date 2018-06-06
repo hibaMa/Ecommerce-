@@ -17,10 +17,9 @@ function connect_db()
 }
 
 function regester_db($userInfo){
-
     $conn = connect_db();
-    $prepare = $conn->prepare('INSERT INTO `user_tbl`(`id`, `Fname`, `email`, `pass`, `Lname`, `city`) VALUES (null,?,?,?,?,?)');
-    $prepare->bind_param('sssss',$userInfo['fname'],$userInfo["email"], $userInfo["pass"],$userInfo['lname'], $userInfo["city"]);
+    $prepare = $conn->prepare('INSERT INTO `user_tbl`(`id`, `Fname`, `email`, `pass`, `Lname`, `city`, `user_activation_code`, `user_email_status`) VALUES (null,?,?,?,?,?,?,?)');
+    $prepare->bind_param('sssssss',$userInfo['fname'],$userInfo["email"], $userInfo["pass"],$userInfo['lname'], $userInfo["city"],$userInfo['user_activation_code'], $userInfo['user_email_status']);
     $prepare->execute();
     if (!$prepare->errno) {
         return false;
@@ -39,17 +38,21 @@ function UserExist_db($email){
     } else return "error";
 }
 
-function signIn_db($userInfo){
+function signIn_db($userInfo)
+{
     $conn = connect_db();
     $prepare = $conn->prepare('SELECT * FROM `user_tbl` WHERE `email`=? AND `pass`=?');
-    $prepare->bind_param('ss',$userInfo["email"], $userInfo["pass"]);
+    $prepare->bind_param('ss', $userInfo["email"], $userInfo["pass"]);
     $prepare->execute();
     if (!$prepare->errno) {
         $result = $prepare->get_result();
-        if($result->num_rows)
-        return $result->fetch_object();
-        else return 0;
-    } else return false;
+        if ($result->num_rows) {
+            $toReturn = $result->fetch_object();
+            if ($toReturn->user_email_status == 'verified') {
+                return $toReturn;
+            } else return "please verify your email ";
+        } else return "not registered";
+    } else return " system error ".$prepare->errno;
 }
 
 function addCategory_db($cat){
