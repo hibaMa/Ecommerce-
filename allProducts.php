@@ -20,16 +20,18 @@ if(isset($_SESSION['user'])) {
 </head>
 <body>
 <input type="hidden" id="catId" value="<?php echo $_GET["id"] ?>"/>
-<div class="title">
+<div class="title">All Products in <?php echo $catName ?> </div>
+<div>
     <div class="selectDiv" id="sortBy">
         <label>sort by :</label>
         <select class="select">
             <option value="name">name</option>
             <option value="price">price</option>
         </select>
-
     </div>
-    All Products in <?php echo $catName ?> </div>
+    <div class="clearFix"></div>
+</div>
+<hr/>
 <div class="container">
 
     <div id="data-container"></div>
