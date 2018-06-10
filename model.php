@@ -113,7 +113,7 @@ function getProductById_db($id){
 }
 
 function deleteCat_db($id){
-    deleteProductInCat_db($id);
+//    deleteProductInCat_db($id);
     $con = connect_db();
     $prepare = $con->prepare('DELETE FROM `categories` WHERE id=?');
     $prepare->bind_param('d', $id);
@@ -131,12 +131,12 @@ function deletePro_db($id){
     $prepare = $con->prepare('DELETE FROM `products` WHERE id=?');
     $prepare->bind_param('d', $id);
     if ($prepare->execute()) {
-        $con = connect_db();
-        $prepare = $con->prepare('DELETE FROM `user_product` WHERE `proID`=? ');
-        $prepare->bind_param('d', $id);
-        if ($prepare->execute()) {
+//        $con = connect_db();
+//        $prepare = $con->prepare('DELETE FROM `user_product` WHERE `proID`=? ');
+//        $prepare->bind_param('d', $id);
+//        if ($prepare->execute()) {
             return true;
-        }else return false;
+//        }else return false;
 
 
     } else {
@@ -160,14 +160,14 @@ function getProductInCat_db($id)
 
 function deleteProductInCat_db($id){
     $con = connect_db();
-    $array=getProductInCat_db($id);
-    foreach($array as $pro) {
-        $prepare = $con->prepare('DELETE FROM `user_product` WHERE `proID`=? ');
-        $prepare->bind_param('d', $pro->id);
-        if (!$prepare->execute()) {
-            return false;
-        }
-    }
+//    $array=getProductInCat_db($id);
+//    foreach($array as $pro) {
+//        $prepare = $con->prepare('DELETE FROM `user_product` WHERE `proID`=? ');
+//        $prepare->bind_param('d', $pro->id);
+//        if (!$prepare->execute()) {
+//            return false;
+//        }
+//    }
 
     $prepare = $con->prepare('DELETE FROM `products` WHERE `category`=?');
     $prepare->bind_param('d', $id);

@@ -21,14 +21,25 @@ if(isset($_SESSION['user'])) {
     <title></title>
 </head>
 <body>
-<input type="hidden" id="catId" value="<?php echo $_GET["id"] ?>"/>
 <div class="title">All Products in <?php echo $catName ?> </div>
 <div class="container">
+    <?php
+    if ($allProduct != null) {
+        foreach ($allProduct as $prod) {
+            ?>
+            <a href="product.php?id=<?php echo $prod->id ?>" class="card">
+                <div class="imgDiv"><img class="image" src="<?php echo $prod->images ?>"></div>
+                <div class="info">
+                    <div class="name"><?php echo $prod->name ?></div>
+                    <div class="price"><?php echo $prod->price ?>$</div>
+                </div>
+                <div class="clearFix"></div>
+            </a>
 
-    <div id="data-container"></div>
-    <div class="clearFix"></div>
-    <div id="pagination-container"></div>
-
+        <?php
+        }
+    }
+    ?>
 </div>
 </body>
 </html>
@@ -38,7 +49,3 @@ if(isset($_SESSION['user'])) {
 }
 else redirect("signIn.php");
 ?>
-
-<script src="product_pagenation.js"></script>
-<script src="paginationjs/dist/pagination.min.js"></script>
-<link rel="stylesheet" href="paginationjs/dist/pagination.css"/>

@@ -40,6 +40,15 @@ if(isset($_GET['action'])){
         case "deleteFromCard":
             deleteFromCard($_GET['id']);
             break;
+        case "getAllCategory":
+            $allCategory=getAllCategory();
+            echo json_encode($allCategory);
+            break;
+        case "getAllProducts":
+            $allProduct=getAllProductByCategoryId($_GET["id"]);
+            echo json_encode($allProduct);
+            break;
+
     }
 }
 
