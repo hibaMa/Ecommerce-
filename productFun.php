@@ -95,6 +95,14 @@ function getAllProductByCategoryId($id){
     return getAllProductByCategoryId_db($id);
 }
 
+function getAllProductByCategoryIdSortByName($id){
+    return getAllProductByCategoryIdSortByName_db($id);
+}
+
+function getAllProductByCategoryIdSortByPrice($id){
+    return getAllProductByCategoryIdSortByPrice_db($id);
+}
+
 function getProductById($id){
     return getProductById_db($id);
 }

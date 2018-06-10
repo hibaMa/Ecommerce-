@@ -48,6 +48,14 @@ if(isset($_GET['action'])){
             $allProduct=getAllProductByCategoryId($_GET["id"]);
             echo json_encode($allProduct);
             break;
+        case "getAllProductsSortByName":
+            $allProduct=getAllProductByCategoryIdSortByName($_GET["id"]);
+            echo json_encode($allProduct);
+            break;
+        case "getAllProductsSortByPrice":
+            $allProduct=getAllProductByCategoryIdSortByPrice($_GET["id"]);
+            echo json_encode($allProduct);
+            break;
 
     }
 }

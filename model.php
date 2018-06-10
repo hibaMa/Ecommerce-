@@ -102,6 +102,30 @@ function getAllProductByCategoryId_db($id){
     }
     return $array;
 }
+function getAllProductByCategoryIdSortByName_db($id){
+    $con = connect_db();
+    $prepare = $con->prepare('SELECT * FROM `products` WHERE `category`=? ORDER BY `name`');
+    $prepare->bind_param("d",$id);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    $array = [];
+    while ($row = $result->fetch_object()) {
+        $array[] = $row;
+    }
+    return $array;
+}
+function getAllProductByCategoryIdSortByPrice_db($id){
+    $con = connect_db();
+    $prepare = $con->prepare('SELECT * FROM `products` WHERE `category`=? ORDER BY `price`');
+    $prepare->bind_param("d",$id);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    $array = [];
+    while ($row = $result->fetch_object()) {
+        $array[] = $row;
+    }
+    return $array;
+}
 
 function getProductById_db($id){
     $con = connect_db();
@@ -282,4 +306,7 @@ function get_user_by_id_db($id){
         return $result->fetch_object();
     } else return "error".$prepare->errno;
 }
+
+
+
 ?>

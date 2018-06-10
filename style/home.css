@@ -9,8 +9,10 @@
     width: 204px;
     height: 280px;
     float: left;
+    background-color: #ffffff;
 }
 .card:hover{
+    text-decoration: none;
     transform:scale(1.15,1.15) ;
 }
 .name{

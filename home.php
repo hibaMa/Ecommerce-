@@ -5,6 +5,7 @@ include_once "controller.php";
 ?>
 <script src="home-pagenation.js"></script>
 <script src="paginationjs/dist/pagination.min.js"></script>
+<link rel="stylesheet" href="paginationjs/dist/pagination.css"/>
 <?php
 if(isset($_SESSION['user'])) {
     $allCategory=getAllCategory();
@@ -30,4 +31,3 @@ if(isset($_SESSION['user'])) {
 }
 else redirect("signIn.php");
 ?>
-<link rel="stylesheet" href="paginationjs/dist/pagination.css"/>

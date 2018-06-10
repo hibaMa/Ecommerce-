@@ -9,21 +9,23 @@
 (function(){
 
 
-    $.get( "controller.php?action=getAllProducts&id="+$('#catId').val(), function( data ) {
-        var objArray= JSON.parse(data);
+    getProduct();
+    function getProduct(action){
+        if(action==null)action="getAllProductsSortByName";//getAllProducts
+        //console.log(action);
+        $.get( "controller.php?action="+action+"&id="+$('#catId').val(), function( data ) {
+            var objArray=JSON.parse(data);
+            $('#pagination-container').pagination({
+                dataSource: objArray,
+                pageSize: 3,
+                callback: function(data, pagination) {
+                    var html = simpleTemplating(data);
+                    $('#data-container').html(html);
+                }
+            });
 
-
-        $('#pagination-container').pagination({
-            dataSource: objArray,
-            pageSize: 3,
-            callback: function(data, pagination) {
-                var html = simpleTemplating(data);
-                $('#data-container').html(html);
-            }
         });
-
-
-    });
+    }
 
     function simpleTemplating(obj) {
         var html='';
@@ -37,10 +39,20 @@
             '<div class="clearFix"></div>'+
             '</a>';
         }
-        console.log(html);
+        //console.log(html);
         return html;
     }
 
+
+    $('#sortBy').on("change",function(){
+        var value=$('#sortBy option:selected').val();
+        if(value=="name"){
+            getProduct("getAllProductsSortByName");
+        }
+        if(value=="price"){
+            getProduct("getAllProductsSortByPrice");
+        }
+    });
 
 
 

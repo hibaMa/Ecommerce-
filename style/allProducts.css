@@ -44,3 +44,17 @@
     border-radius: 6px;
     margin: 6px;
 }
+.selectDiv{
+    display: inline-block;
+    float: left;
+    font-size: 19px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.select{
+    margin-top: -3px;
+    width: 116px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 5px;
+}
